@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    // Variable Names = นึกถึง readalbeability อ่านแล้วเข้าใจง่าย ชื่อตัวแปรสื่อถึงค่าที่จะเก็บ แบ่งเป็น 2 ประเภท
+    // 1.snake case ex. student_id, student_name
+    // 2.camelCase ex. studentID, studentName
+
+    // Data Types and Sizes
+    // char = 1 byte(ตัวอักษร)
+    // unsigned char = 1 byte
+    // signed char = 1 byte
+    // int = 4 byte(จำนวนเต็ม)
+    // unsigned int = 4 byte
+    // long = 4 byte
+    // unsigned long = 4 byte
+    // float = 4 byte(จำนวนจริง)
+    // double = 8 byte
+    // long double = 10 byte
+    // bool = 1 bit(ค่าความจริง)
+
+    char c;
+    int i;
+    float f;
+    double d;
+    printf("size of c = %d\n", sizeof(c));
+    printf("size of i = %d\n", sizeof(i));
+    printf("size of f = %d\n", sizeof(f));
+    printf("size of d = %d\n", sizeof(d));
+    printf("-----------------------------------------\n");
+
+    // constants
+    // 1.จำนวนเต็ม ex. integer = 1234, long = 1234567891
+    // 2.จำนวจริง ex. float = 123.4
+    // 3.เลขฐาน 2, 8, 16 ex. เลขฐาน2 = 0b101, เลขฐาน8 = 0124, เลขฐาน16 = 0x12af
+    // 4.ตัวอักษร ex. 'x', '0'
+    // 5.ASCII ex. \n = newline, \0 = null, \\ = backlash
+
+    int x = 0b1010111;
+    printf("%o (8)\n", x);  // octal
+    printf("%d (10)\n", x); // decimal
+    printf("%x (16)\n", x); // hexadecimal
+    printf("%X (16)\n", x); // hexadecimal
+    printf("-----------------------------------------\n");
+
+    // Variable Declarations
+    //1. printf() and puts() ex. %d = printเลขฐานสิบ, %f = printเลขจำนวนจริง, %s = printตัวอักษร
+    //. Character IO and OP
+    //  getchar() ใช้รับอักขระ 1 ตัวจาก stdin เข้ามาในโปรแกรม
+    //  putchar() ใช้ส่งอักขระ 1 ตัวออกไปยัง stdout
+
+    // Arithmetic Operators
+    // +, -, *, / (เปลี่ยนเป็นตัวแปรที่มีค่าใหญ่กว่า,หาเป็นจำนวนเต็มทั้งตัวตั้งและตัวหารให้ตัดเศษทิ้งไป), % (ไม่สามารถใช้กับตัวแปรประเภท float และ double ได้)
+
+    // Relational Operator and Logical Operators
+    // 1.Relational Operator ex. >, >=, <, <=, ==, !=(ไม่เท่ากับ)
+    // 2.Logical Operators ex. &&(และ), ||(หรือ), !(นิเสธ)
+
+    // Type Conversion = เปลี่ยนจาก narrow -> wider 
+    //                            char <--> int
+    //                            logic<--> number
+
+    // Increment and Decrement Operators ex. n++, ++n, m--, --m
+
+    // Bitwise Opeartors
+    // &  (AND)
+    // |  (OR)
+    // ^  (XOR)
+    // << (left shift)
+    // >> (right shift)
+    // ~  (NOT)
+    
+    
+    return 0;
+}
