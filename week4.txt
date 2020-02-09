@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+long long factorial(long long n)
+    {
+       if (n == 0)
+          return 1;
+       else
+          return n * factorial(n-1);
+    }
+
+int first(int x){
+    return x*10;
+}
+
+int second(int x){
+    return x*20;
+}
+
+int isEven(int x){
+    if (x%2 == 0)
+        return 1;
+    else 
+        return 0;
+
+}
+
+int main()
+{
+    // Function Defimition = การนิยามฟังก์ชัน
+    int a ;
+    printf("Enter value of a: ");
+    scanf("%d",&a);
+    a = isEven(a);
+    if(a)
+        printf("a is Even!!\n");
+    else
+        printf("Nope a is Odd!!\n");
+    
+    printf("-----------------------------------------\n");
+
+    // Function Prototypes = เป็นหนึ่งในรูปแบบของฟังก์ชันที่สามารถละชื่อตัวแปรไว้ได้แต่ละประเภทข้อมูลไม่ได้
+
+    // Standard Library Functions and Math Library Functions
+    // Standard Library Functions ex. printf(), scanf(), getchar()
+    // Math Library Functions ex. sqrt(), exp(), log()
+
+    float c = 13.0, d = 3.0, f = 4.0;
+    printf("c + d * f         = %.2f\n", c + d * f);
+    printf("sqrt of c + d * f = %.2f\n", sqrt(c + d * f));
+
+    printf("-----------------------------------------\n");
+
+    // return value = ฟังก์ชันที่จะมีการส่งค่ากลับมา เหมือนตัวอย่างด้านบนสุด
+
+    // Using Fuctions as Parameters to Functions = ค่าที่ได้จากฟังก์ชันสมารถส่งไปเป็นพารามิเตอร์ของอีกฟังก์ชันได้
+    
+    int b ;
+    printf("Enter b: ");
+    scanf("%d",&b);
+    printf("before function b = %d\n",b);
+    int total = second(first(b));
+    printf("after function b = %d\n",total);
+    printf("-----------------------------------------\n");
+    
+    // Recursion = ฟังก์ชันที่สามารถเรียกใช้ตัวเองซ้ำไปมาได้
+    long long n ;
+    printf("Enter n: ");
+    scanf("%d",&n);
+    printf("%lld! = %lld\n", n, factorial(n)); 
+    printf("-----------------------------------------\n");
+
+    
+    return 0;
+}
