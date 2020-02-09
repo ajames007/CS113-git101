@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+struct person
+{
+    char name[20];
+    int age;
+    float money;
+};
+
+
+int main()
+{   
+
+    //การใช้struct
+    struct person student;
+    printf("Enter name: ");
+    scanf("%s",&student.name);
+    printf("Enter age ");
+    scanf("%d",&student.age);
+    printf("Enter money: ");
+    scanf("%f",&student.money);
+    printf("%s has age %d and money %.2f THB\n", student.name, student.age, student.money);
+    printf("-----------------------------------------\n");
+
+    //การใช้ typedef
+    typedef int james;
+    typedef char* bond;
+
+    james nunmer = 20 ;
+    bond name1 = "James Bond" ;
+    printf("name = %s ,number = %d\n",name1,nunmer);
+    printf("-----------------------------------------\n");
+
+    // Linked List = list ที่เก็บค่าของตัวแปรและ adress ของ list ถัดไปเรื่อยๆ
+    // Deletion in linked list = จะลบตัวไหนออก ก็ให้ เปลี่ยน address ที่จะเข้าถึงตัวถัดไปของตัวก่อนหน้าให้ข้ามไปตัวถัดไปต่อจากตัวที่ลบ
+    // Insertion in linked list = จะเพิ่มตัวไหนเข้าก็ให้ เปลี่ยน address ของตัวก่อนหน้ามาตัวที่จะแทรก แล้วเปลี่ยน address ของตัวที่จะแทรกไปหาตัวถัดไปของตัวที่แทรก
+    // Doubly Linked List =  linked list ที่มี address ไปหาตัวก่อนหน้าด้วย
+    // Circular Linked List = linked list ที่มี address ของตัวสุดท้าย ไปหาตัวแรก
+
+return 0;
+}
