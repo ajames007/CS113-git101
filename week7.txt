@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int squareByValue(int x){
+    x = x*x;
+}
+int squareByreference(int *y){
+    *y = *y * *y;
+}
+
+int main()
+{
+//Pointer and Address = ภาษา C เป็นภาษาที่สามารถเข้าถึงและจัดการข้อมูล ผ่าน memory ด้วย pointers ได้
+//                           โดย pointer  จะเป็นตัวแปรที่เก็บ address ของตัวแปรนั้นๆ
+    
+//Pointer Operators = 1.& -> adress operator -> ใช้หาค่า adrress ของตัว operand ex. p = &c;
+//                    2.* -> dereferencing operator -> ใช้เข้าถึงข้อมูลของ address นั้นกำลังชี้อยู่
+
+int a;
+printf("Enter a: ");
+scanf("%d",&a);
+int *p;
+
+p =&a;
+printf(" a = %d\n",a);
+printf(" p = %d\n",p);
+printf("*p = %d\n",*p);
+printf("-----------------------------------------\n");
+
+// ฟังก์ชัน scanf() = คล้ายๆฟังก์ชัน printf() แต่มีผลตรงข้ามคือ รับค่าเข้ามาเก็บไว้ในaddress ของตัวแปรที่กำหนด 
+
+// pointer with array -> a กับ a[0] มีค่าเท่ากัน และ *(a+i) กับ a[i] มีค่าเท่ากัน
+
+// การจำลองากรเรียกฟังก์ชันแบบ call by reference 
+// 1.call by value 
+// 2.call by reference
+printf("Call by value!!\n");
+int x,y;
+printf("Enter x: ");
+scanf("%d",&x);
+printf("value of x = %d\n",x);
+squareByValue(x);
+printf("after func value of x = %d\n",x);
+printf("Call by reference\n");
+printf("Enter y: ");
+scanf("%d",&y);
+printf("value of y = %d\n",y);
+squareByreference(&y);
+printf("after func value of y = %d\n",y);
+printf("-----------------------------------------\n");
+
+//Expressions and Pointer Arithmetic = สามารถเลื่อนตำแหน่ง index ใน array ที่ pointer กำลังชี้อยู่ด้วยตัว operators ได้
+float f[4] = {0,1,2,3};
+float *pf;
+pf = &f[0];
+printf("start pf = %p\n",pf);
+printf("after +2 pf = %p\n",pf+2);
+printf("-----------------------------------------\n");
+
+// Pointer to Functions = สามารถใช้ตัวแปร pointer อ้างไป adrress ใน memory ในฟังก์ชันได้
+
+// Dynamic Memory Allocation
+// 1.malloc() ex. 
+// int *data;
+// data = (int *)malloc(1000 * sizeof(int));
+// ทำการจองพื้นที่บน memory ไว้ให้ data
+// 2.free() ex.
+// free(data);
+// ทำการคืนพื้นที่บน memory ที่จองไว้ให้ data
+
+
+return 0;
+}
