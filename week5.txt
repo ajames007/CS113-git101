@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+    // Scope Ruels
+    // 1.Local Variables = ตัวแปรที่ถูกกำหนดในฟังก์ชันไหนก็จะใช้ได้แค่ฟังก์ชันนั้น
+    // 2.Global Variales = ตัวแปรที่สามารถใช้ได้ทุกฟังก์ชัน
+    // 3.Storage Classes = แบ่งเป็น auto,register,extern และstatic เพื่อช่วยกำหนดช่วงชีวิตใน memory
+    //                     แบ่งได้เป็น 1. automatic storage duration (auto, register) -> ตัวแปร
+    //                     เหล่านี้จะอยู่ใน memory เฉพาะตอนที่โปรแกรมรันใน block นั้นๆ
+    //                              2. static storage duration -> อยู่ใน memoryตลอด
+      
+    // 4.Dynamic Storage Duration = สามารถถูก allocate ขึ้นมาตามความต้องการของโปรแกรมขณะที่โปรแกรมกำลังทำงานอยู่ได้
+    
+    // Seperate Comolation -> การคอมไพล์แยกส่วน
+    // วิธีการคอมไพล์
+    // $ gcc -c main.c                   # คำสั่งนี้จะสร้าง main.o 
+    // $ gcc -c func.c                   # คำสั่งนี้จะสร้าง func.o 
+    // $ gcc main.o func.o -o main.exe   # คำสั่งนี้จะลิงก์ main.o และ func.o เข้าด้วยกัน
+
+    // การใช้ Make
+    // ไฟล์ Makefile จะบรรจุกฎต่างๆ ที่ใช้ในการสร้าง อาทิ object file หรือ executable file
+    // การสร้างกฎ
+    //     target: dependency
+    //     -->tab-->คำสั่งที่ใช้ในการสร้าง target
+    // การสร้าง Static Library
+    //  gcc -c func.c 
+
+    //  ar cr libfunc.a func.o
+    
+    // การสร้าง Shared (Dynamic) Library
+    // Windows
+    //     gcc -shared -o libfunc.dll -Wl,--out-implib,libfunc.dll.a *.o
+
+    // MacOSX
+    //     gcc -shared -o libfunc.dylib *.o
+
+    // Linux
+    //     gcc -shared -o libfunc.so *.o
+    
+    // การเรียกใช้ฟังก์ชันใน Shared Library ของภาษา C จาก Python
+    // from ctypes import cdll
+    // c_lib = cdll.LoadLibrary("libfunc.dll")
+    // c_lib.c_function(123)
+    
+    return 0;
+}
