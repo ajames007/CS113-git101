@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define x 4
+
+int main()
+{
+    // array = กลุ่มของตัวแปรที่มีชนิดเดียวกันที่ถูกจัดอยู่ร่วมกัน
+    // การประกาศ array = ประเภทของตัวแปรจะต้องเป็นประเภทเดียวกัน และต้องกำหนดขนาดของ array ด้วย
+    //                   ex. int A[10]; , int A[] = {0, 1, 2, 3} ปล. ตัวสุดท้ายใน aaray จะมีค่าเป็น null เสมอ
+    // การเรียกใช้ array = ตัวแปรตัวละตัวจะมี index กำกับอยู่โดย เริ่มจาก index ที่ 0 
+    int size;
+    printf("Enter size of array: ");
+    scanf("%d",&size);
+    int a[size] ;
+    for (int i = 0; i < size; i++)
+    {
+        a[i] = i+1;
+        printf("a[%d] = %d\n",i,a[i]);
+    }
+    printf("-----------------------------------------\n");
+
+    printf("Test value of define = %d\n",x);    
+    printf("-----------------------------------------\n");
+
+    // 2D array = เป็นarray ที่ซ้อน array ในรูปแบบของตาราง ex. int A[2][3];
+    //            ,int A[2][3] = {{1,2,3},{4,5,6}},int A[][3] = {{1,2,3},{4,5,6}}
+    //            (สามารถไม่ประกาศcolumn ได้ แต่ต้องประกาศ row)
+    
+    int rowSize, colSize;
+    printf("Enter rowSize: ");
+    scanf("%d",&rowSize);
+    printf("Enter colSize: ");
+    scanf("%d",&colSize);
+    int B[rowSize][colSize];
+
+    for (int i = 0; i < rowSize; i++)
+    {
+        for (int j = 0; j < colSize; j++)
+        {
+            B[i][j] = i;
+            printf("%d ",B[i][j]);
+        }
+        printf("\n");
+    }
+    printf("-----------------------------------------\n");
+
+    return 0;
+}
