@@ -1,0 +1,138 @@
+//6210450512 Chanakarn Susuinraworn
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node
+{
+  int data;
+  struct node *next;
+} NODE;
+
+int find(NODE **head, NODE **tail, int input)
+{
+  int count, type;
+  NODE *tmp = *head;
+  for (count = 1; tmp; count++)
+  {
+    if (tmp->data >= input && count == 1)
+    {
+      type = 1;
+      return type;
+    }
+    else if (tmp->data <= input && tmp->next != NULL)
+    {
+      tmp = tmp->next;
+      if (tmp->data >= input)
+      {
+        type = 2;
+        return type;
+      }
+      else
+      {
+        continue;
+      }
+    }
+    else if (tmp->next == NULL)
+    {
+      type = 3;
+      return type;
+    }
+    tmp = tmp->next;
+  }
+}
+
+void push(NODE **head_ref, int input)
+{
+  NODE *new_node = (NODE *)malloc(sizeof(NODE));
+  new_node->data = input;
+  new_node->next = *head_ref;
+  *head_ref = new_node;
+}
+
+void insert(NODE *prev_node, int new_data)
+{
+  NODE *new_node = (NODE *)malloc(sizeof(NODE));
+  new_node->data = new_data;
+  new_node->next = prev_node->next;
+  prev_node->next = new_node;
+}
+
+void append(NODE **head_ref, NODE **tail_ref, int input)
+{
+  (*tail_ref)->next = (NODE *)malloc(sizeof(NODE));
+  *tail_ref = (*tail_ref)->next;
+  (*tail_ref)->data = input;
+  (*tail_ref)->next = NULL;
+}
+
+void queue(NODE **head, NODE **tail, int input)
+{
+  if (*head == NULL)
+    *head = *tail = (NODE *)malloc(sizeof(NODE));
+  else
+  {
+    (*tail)->next = (NODE *)malloc(sizeof(NODE));
+    *tail = (*tail)->next;
+  }
+  (*tail)->data = input;
+  (*tail)->next = NULL;
+}
+
+void print(NODE *head)
+{
+  NODE *tmp;
+  for (tmp = head; tmp; tmp = tmp->next)
+    printf("%d\n", tmp->data);
+}
+
+int main()
+{
+  int input, i, type, inp[7];
+  NODE *head = NULL, *tail = NULL, *tmp, *tmp2, *tmp3, *tmp4;
+  for (i = 0; 1; i++)
+  {
+    scanf("%d", &inp[i]);
+    input = inp[i];
+    if (input == -1)
+    {
+      break;
+    }
+    if (i == 0)
+    {
+      queue(&head, &tail, input);
+    }
+    else
+    {
+      type = find(&head, &tail, input);
+      if (type == 1)
+      {
+        push(&head, input);
+      }
+      else if (type == 2)
+      {
+        for (tmp = head, tmp2 = head; tmp; tmp = tmp->next)
+        {
+          if (tmp->data <= input && tmp->next != NULL)
+          {
+            tmp2 = tmp2->next;
+            if (tmp2->data >= input)
+            {
+              break;
+            }
+            continue;
+          }
+          tmp2 = tmp2->next;
+        }
+        if (tmp)
+        {
+          insert(tmp, input);
+        }
+      }
+      else if (type == 3)
+      {
+        append(&head, &tail, input);
+      }
+    }
+  }
+  print(head);
+}
