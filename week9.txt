@@ -1,0 +1,69 @@
+การสร้าง branch 
+git branch // เช็คว่ามีbranch อะไรบ้าง
+git branch [ชื่อbranchที่อยากตั้ง] (feature) // สร้าง branch
+git checkout [ชื่อbranchที่ตั้งไว้] // เปลี่ยน  branch 
+
+การ Merge Branch แบบไม่มี Conflict
+ลองเพิ่ม file ใน branch ที่สร้างมาใหม่แล้ว (feature1.txt)
+git add [ชื่อfileที่ตั้งไว้]
+git commit -m "[ข้อความที่อยาก commit]"
+git checkout master // เปลี่ยน branch กลับมาที่ master
+เพิ่ม file ใน branch master (master1.txt)
+git add [ชื่อfileที่ตั้งไว้]
+git commit -m "[ข้อความที่อยาก commit]"
+git Merge [ชื่อbranchที่อยาก Merge] (feature) // Merge 2 branch เข้าด้วยกัน
+git log --all --decorate --oneline --graph // เช็คดูจะเห็นว่าสอง branch เชื่อมถึงกันแล้ว
+
+การ Pull แบบไม่มี Conflict
+สร้าง directory ใหม่ (git102)
+cd ..
+git clone [git-url] git 102
+cd git102
+ลองเพิ่ม file ใหม่ (new-1.txt)
+git add new-1.txt
+git commit -m "[ข้อความที่อยาก commit]"
+git push origin master
+cd .. 
+cd git101 // กลับมาที่ directoryแรก
+git Pull origin master
+ls -1 // เช็คว่ามีไฟล์จาก git102 รึเปล่า
+
+การ Merge แบบมี Conflict
+git checkout -b feature2 //สร้าง branch ใหม่ พร้อมเปลี่ยนไปที่นั่น
+ลองแก้ไข ไฟล์ที่มีทั้ง สอง branch ให้มีข้อความแตกต่างกัน
+git add [file ที่แก้ใน feature2]
+git commit -m "[ข้อความที่อยาก commit]"
+git checkout master
+git add [file ที่แก้ใน master]
+git commit -m "[ข้อความที่อยาก commit]"
+git Merge [branch ที่มีไฟล์เหมือนกันแต่ แก้ให้ต่างกัน] (feature2)
+เปิดไฟล์ที่ว่าขึ้นมาจะเห็นข้อความแสดง Conflict และ
+หาก Editor มี tool ที่ช่วยจัดการ conflict เช่น Atom สามารถเลือกว่าจะใช้ข้อมูลจาก branch ใด
+หาก Editor ไม่มี tool ช่วย เช่น sublime ต้อง เพิ่ม/แก้/ลบ เอง
+หลังจากนั้นจะสังเกตุว่า branch ยัง Merge ไม่เสร็จ
+ให้ทำการ add & commit เพื่อเป็นการจบการ Merge
+git add [ไฟล์ที่ได้รับการแก้]
+git commit -m "[ข้อความที่อยาก commit]"
+git push origin master
+
+การ Pull แบบมี Conflict
+cd ..
+cd git102
+git pull origin master
+แก้ไข้ไฟล์ใน git102 (new-1.txt)
+git add new-1.txt
+git commit -m "[ข้อความที่อยาก commit]"
+cd .. 
+cd git101 // ย้ายกลับมาที่ directory แรก
+แก้ไขไฟล์ที่ เหมือนกันทั้ง 2 directory (new-1)ในบรรทัดเดียวกันให้ต่างกันเพื่อสร้าง conflict
+git add new-1.txt
+git commit -m "[ข้อความที่อยาก commit]"
+git pull origin master
+จะเห็นว่าเกิด conflict ขึ้น ให้แก้ไขให้เรียบร้อยจากนั้น
+git add new-1.txt
+git commit -m "[ข้อความที่อยาก commit]"
+git push origin master
+cd .. 
+cd git102 // ย้ายกลับมาที่ อีก directory
+git pull origin master 
+สังเกตุว่าไม่มีconflict เพราะไม่มีการแก้ไขแล้ว
